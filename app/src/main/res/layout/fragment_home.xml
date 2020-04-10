@@ -1,0 +1,176 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@android:color/white"
+    tools:context=".ui.home.HomeFragment">
+
+    <androidx.core.widget.NestedScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:paddingStart="@dimen/text_title_padding"
+                android:paddingTop="@dimen/text_title_padding"
+                android:paddingEnd="@dimen/text_title_padding"
+                android:text="@string/home_title"
+                android:textAlignment="center"
+                android:textSize="@dimen/text_title_size"
+                android:textStyle="bold" />
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:paddingStart="@dimen/text_title_padding"
+                android:paddingEnd="@dimen/text_title_padding"
+                android:paddingBottom="@dimen/text_subtitle_padding_bottom"
+                android:text="@string/home_subtitle"
+                android:textAlignment="center"
+                android:textSize="@dimen/text_subtitle_size" />
+
+            <com.google.android.material.textfield.TextInputLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_horizontal"
+                android:layout_marginTop="10dp"
+                android:hint="@string/home_input_val_excl"
+                app:passwordToggleTint="@color/colorAccent">
+
+                <EditText
+                    android:id="@+id/eTValExcl"
+                    android:layout_width="@dimen/input_width"
+                    android:layout_height="wrap_content"
+                    android:layout_margin="@dimen/input_margin"
+                    android:importantForAutofill="no"
+                    android:inputType="numberDecimal"
+                    android:maxLength="40"
+                    android:maxLines="1" />
+            </com.google.android.material.textfield.TextInputLayout>
+
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+
+                <com.google.android.material.textfield.TextInputLayout
+                    android:id="@+id/tILVatRate"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="10dp"
+                    android:hint="@string/home_input_val_VAT"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent"
+                    app:passwordToggleTint="@color/colorAccent">
+
+                    <EditText
+                        android:id="@+id/eTValVatRate"
+                        android:layout_width="@dimen/input_width"
+                        android:layout_height="wrap_content"
+                        android:layout_margin="@dimen/input_margin"
+                        android:importantForAutofill="no"
+                        android:inputType="number"
+                        android:maxLength="2"
+                        android:maxLines="1" />
+                </com.google.android.material.textfield.TextInputLayout>
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/percentage"
+                    android:textAlignment="center"
+                    android:textSize="@dimen/text_title_size"
+                    app:layout_constraintBottom_toBottomOf="@id/tILVatRate"
+                    app:layout_constraintEnd_toEndOf="@id/tILVatRate"
+                    app:layout_constraintTop_toTopOf="@id/tILVatRate" />
+
+                <HorizontalScrollView
+                    android:id="@+id/nestedScroll"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:fadingEdgeLength="100dp"
+                    android:requiresFadingEdge="horizontal"
+                    android:scrollbars="none"
+                    app:layout_constraintEnd_toEndOf="@id/tILVatRate"
+                    app:layout_constraintStart_toStartOf="@id/tILVatRate"
+                    app:layout_constraintTop_toBottomOf="@id/tILVatRate">
+
+                    <LinearLayout
+                        android:id="@+id/lLVatRates"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:divider="@drawable/divider"
+                        android:orientation="horizontal"
+                        android:showDividers="middle" />
+                </HorizontalScrollView>
+
+                <!--<include
+                    layout="@layout/vat_rate_item"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    app:layout_constraintEnd_toEndOf="@id/tILVatRate"
+                    app:layout_constraintStart_toStartOf="@id/tILVatRate"
+                    app:layout_constraintTop_toBottomOf="@id/tILVatRate" />-->
+
+            </androidx.constraintlayout.widget.ConstraintLayout>
+
+            <TextView
+                android:id="@+id/txtFinalPrice"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:paddingStart="@dimen/text_title_padding"
+                android:paddingTop="@dimen/text_subtitle_padding_bottom"
+                android:paddingEnd="@dimen/text_title_padding"
+                android:text="@string/home_total_price"
+                android:textAlignment="center"
+                android:textSize="@dimen/text_title_size"
+                android:textStyle="bold" />
+
+            <TextView
+                android:id="@+id/txtFinalPriceResult"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:paddingStart="@dimen/text_title_padding"
+                android:paddingTop="@dimen/text_subtitle_padding_bottom"
+                android:paddingEnd="@dimen/text_title_padding"
+                android:textAlignment="center"
+                android:textIsSelectable="true"
+                android:textSize="@dimen/text_title_size" />
+
+            <TextView
+                android:id="@+id/txtFinalVAT"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:paddingStart="@dimen/text_title_padding"
+                android:paddingTop="@dimen/text_subtitle_padding_bottom"
+                android:paddingEnd="@dimen/text_title_padding"
+                android:text="@string/home_total_vat"
+                android:textAlignment="center"
+                android:textSize="@dimen/text_title_size"
+                android:textStyle="bold" />
+
+            <TextView
+                android:id="@+id/txtFinalVATResult"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:paddingStart="@dimen/text_title_padding"
+                android:paddingTop="@dimen/text_subtitle_padding_bottom"
+                android:paddingEnd="@dimen/text_title_padding"
+                android:paddingBottom="100dp"
+                android:textAlignment="center"
+                android:textIsSelectable="true"
+                android:textSize="@dimen/text_title_size" />
+
+        </LinearLayout>
+
+    </androidx.core.widget.NestedScrollView>
+
+</androidx.constraintlayout.widget.ConstraintLayout>
