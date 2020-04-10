@@ -14,7 +14,7 @@
     <string name="about_rate_button">Rate it on Google Play</string>
     <string name="about_created">App created by Arctosoft AB.\nVersion 1.0</string>
 
-    <string name="spinner_items">Standard VAT rates:</string>
+    <string name="spinner_items">Common VAT rates:</string>
     <string name="spinner_default_text">Select a country</string>
     <string name="spinner_more_in_about">VAT rates for each country can be found in About</string>
     <string name="spinner_help">Choose a country from the list to see its VAT rates:</string>
