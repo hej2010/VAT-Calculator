@@ -1,4 +1,4 @@
-package se.arctosoft.vatcalculator.ui.about;
+package se.arctosoft.vatcalculator.ui;
 
 import android.content.Intent;
 import android.net.Uri;

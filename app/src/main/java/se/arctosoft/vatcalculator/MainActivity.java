@@ -12,9 +12,9 @@ import androidx.navigation.ui.NavigationUI;
 
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 
-import se.arctosoft.vatcalculator.ui.about.AboutFragment;
-import se.arctosoft.vatcalculator.ui.home.HomeFragment;
-import se.arctosoft.vatcalculator.ui.reverse.ReverseFragment;
+import se.arctosoft.vatcalculator.ui.AboutFragment;
+import se.arctosoft.vatcalculator.ui.HomeFragment;
+import se.arctosoft.vatcalculator.ui.ReverseFragment;
 
 public class MainActivity extends AppCompatActivity {
 

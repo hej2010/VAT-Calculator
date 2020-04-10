@@ -5,7 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@android:color/white"
-    tools:context=".ui.home.HomeFragment">
+    tools:context=".ui.HomeFragment">
 
     <androidx.core.widget.NestedScrollView
         android:layout_width="match_parent"
@@ -92,6 +92,16 @@
                     app:layout_constraintEnd_toEndOf="@id/tILVatRate"
                     app:layout_constraintTop_toTopOf="@id/tILVatRate" />
 
+                <TextView
+                    android:id="@+id/txtChoose"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:text=""
+                    android:textSize="@dimen/text_size_small"
+                    app:layout_constraintEnd_toEndOf="@id/tILVatRate"
+                    app:layout_constraintStart_toStartOf="@id/tILVatRate"
+                    app:layout_constraintTop_toBottomOf="@id/tILVatRate" />
+
                 <HorizontalScrollView
                     android:id="@+id/nestedScroll"
                     android:layout_width="0dp"
@@ -101,7 +111,7 @@
                     android:scrollbars="none"
                     app:layout_constraintEnd_toEndOf="@id/tILVatRate"
                     app:layout_constraintStart_toStartOf="@id/tILVatRate"
-                    app:layout_constraintTop_toBottomOf="@id/tILVatRate">
+                    app:layout_constraintTop_toBottomOf="@id/txtChoose">
 
                     <LinearLayout
                         android:id="@+id/lLVatRates"
@@ -121,6 +131,13 @@
                     app:layout_constraintTop_toBottomOf="@id/tILVatRate" />-->
 
             </androidx.constraintlayout.widget.ConstraintLayout>
+
+            <Spinner
+                android:id="@+id/spinner"
+                android:layout_width="@dimen/input_width"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_horizontal"
+                android:spinnerMode="dropdown" />
 
             <TextView
                 android:id="@+id/txtFinalPrice"

@@ -1,4 +1,4 @@
-package se.arctosoft.vatcalculator.ui;
+package se.arctosoft.vatcalculator.ui.data;
 
 import androidx.lifecycle.MutableLiveData;
 import androidx.lifecycle.ViewModel;
@@ -8,8 +8,6 @@ public class DataViewModel extends ViewModel {
     public static final int VAT_DEFAULT_POS = 4;
     private MutableLiveData<Double> valueExclVat, valueInclVat;
     private MutableLiveData<Integer> vatRate;
-    // API Key: 4111154764beda200e7ea14ffac2dde7
-    // http://apilayer.net/api/rate_list?access_key=4111154764beda200e7ea14ffac2dde7&format=0
 
     public DataViewModel() {
         valueExclVat = new MutableLiveData<>((double) 0);
