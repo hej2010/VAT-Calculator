@@ -63,7 +63,7 @@ public class AboutFragment extends Fragment implements AdapterView.OnItemSelecte
         if (position == 0) {
             hideRates();
         } else {
-            CountryVAT c = (CountryVAT) parent.getItemAtPosition(position - 1);
+            CountryVAT c = (CountryVAT) parent.getItemAtPosition(position);
 
             txtStandardRate.setText(getString(R.string.spinner_item_standard_rate, c.getStandardRate()));
 

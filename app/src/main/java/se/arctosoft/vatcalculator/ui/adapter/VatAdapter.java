@@ -49,7 +49,7 @@ public class VatAdapter extends ArrayAdapter<CountryVAT> {
             txtName.setText(context.getString(R.string.spinner_default_text));
             imgFlag.setImageDrawable(null);
         } else {
-            CountryVAT country = statuses.get(position - 1);
+            CountryVAT country = statuses.get(position);
             txtName.setText(country.getCountryName());
             imgFlag.setImageResource(country.getDrawableID());
         }
