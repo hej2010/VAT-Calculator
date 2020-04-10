@@ -92,6 +92,16 @@
                     app:layout_constraintEnd_toEndOf="@id/tILVatRate"
                     app:layout_constraintTop_toTopOf="@id/tILVatRate" />
 
+                <TextView
+                    android:id="@+id/txtChoose"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:text="@string/spinner_items"
+                    android:textSize="@dimen/text_size_small"
+                    app:layout_constraintEnd_toEndOf="@id/tILVatRate"
+                    app:layout_constraintStart_toStartOf="@id/tILVatRate"
+                    app:layout_constraintTop_toBottomOf="@id/tILVatRate" />
+
                 <HorizontalScrollView
                     android:id="@+id/nestedScroll"
                     android:layout_width="0dp"
@@ -101,7 +111,7 @@
                     android:scrollbars="none"
                     app:layout_constraintEnd_toEndOf="@id/tILVatRate"
                     app:layout_constraintStart_toStartOf="@id/tILVatRate"
-                    app:layout_constraintTop_toBottomOf="@id/tILVatRate">
+                    app:layout_constraintTop_toBottomOf="@id/txtChoose">
 
                     <LinearLayout
                         android:id="@+id/lLVatRates"
@@ -111,6 +121,16 @@
                         android:orientation="horizontal"
                         android:showDividers="middle" />
                 </HorizontalScrollView>
+
+                <TextView
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="@dimen/input_margin"
+                    android:text="@string/spinner_more_in_about"
+                    android:textSize="@dimen/text_size_small"
+                    app:layout_constraintEnd_toEndOf="@id/tILVatRate"
+                    app:layout_constraintStart_toStartOf="@id/tILVatRate"
+                    app:layout_constraintTop_toBottomOf="@id/nestedScroll" />
 
             </androidx.constraintlayout.widget.ConstraintLayout>
 

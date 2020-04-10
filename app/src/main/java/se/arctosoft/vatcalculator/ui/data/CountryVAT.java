@@ -1,7 +1,6 @@
 package se.arctosoft.vatcalculator.ui.data;
 
 import android.content.Context;
-import android.util.Log;
 import android.util.Pair;
 
 import androidx.annotation.NonNull;
@@ -38,7 +37,7 @@ public class CountryVAT {
             JSONObject rr = o.getJSONObject("reduced_rates");
             for (Iterator<String> it = rr.keys(); it.hasNext(); ) {
                 String key = it.next();
-                Log.e("FromJson", "fromJson: " + key);
+                //Log.e("FromJson", "fromJson: " + key);
                 try {
                     reducedRates.add(new Pair<>(key, rr.getDouble(key)));
                 } catch (Exception e) {

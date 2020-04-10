@@ -29,6 +29,7 @@ public class ReverseFragment extends Fragment {
     private EditText eTValIncl, eTValVatRate;
     private TextView txtFinalPrice, txtFinalPriceResult, txtFinalVAT, txtFinalVATResult;
     private LinearLayout lLVatRates;
+
     private boolean dontUpdate;
 
     public View onCreateView(@NonNull LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
@@ -68,7 +69,7 @@ public class ReverseFragment extends Fragment {
         }
 
         if (set && vatRate != null) {
-            if (((SharedStuff.checkAndUpdateVatRates(vatRate, lLVatRates, getResources())))) {
+            if (SharedStuff.checkAndUpdateVatRates(vatRate, lLVatRates, getResources())) {
                 dontUpdate = false;
             }
         }
