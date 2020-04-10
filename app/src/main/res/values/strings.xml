@@ -5,14 +5,19 @@
     <string name="title_about">About</string>
 
     <string name="home_title">Add VAT</string>
+    <string name="home_subtitle">Calculate the price inclusive VAT</string>
     <string name="reverse_title">Remove VAT</string>
+    <string name="reverse_subtitle">Calculate the price exclusive VAT</string>
     <string name="about_title">About</string>
 
-    <string name="home_subtitle">Calculate the final price after adding VAT</string>
-    <string name="home_input_val_excl">Price exclusive of VAT</string>
-    <string name="home_input_val_VAT">VAT rate</string>
-    <string name="home_total_price">Price inclusive %1$d%% VAT:</string>
-    <string name="home_total_vat">VAT amount:</string>
+    <string name="price_exclusive_vat_hint">Price exclusive of VAT</string>
+    <string name="price_inclusive_vat_hint">Price inclusive of VAT</string>
+    <string name="vat_rate">VAT rate</string>
+    <string name="price_inclusive_vat_output_text">Price inclusive %1$d%% VAT:</string>
+    <string name="price_exclusive_vat_output_text">Price exclusive %1$d%% VAT:</string>
+    <string name="vat_amount">VAT amount:</string>
+
+
 
     <string name="percentage" translatable="false">%</string>
     <string name="percentage_placeholder" translatable="false">%1$d%%</string>

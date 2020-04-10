@@ -18,11 +18,14 @@ import androidx.lifecycle.ViewModelProvider;
 import java.util.Locale;
 
 import se.arctosoft.vatcalculator.R;
+import se.arctosoft.vatcalculator.ui.DataViewModel;
+import se.arctosoft.vatcalculator.ui.SharedStuff;
+
+import static se.arctosoft.vatcalculator.ui.DataViewModel.VAT_RATES;
 
 public class HomeFragment extends Fragment {
     private static final String TAG = "HomeFragment";
-    private static final int[] VAT_RATES = {15, 16, 18, 19, 20, 21, 25, 27};
-    private HomeViewModel homeViewModel;
+    private DataViewModel dataViewModel;
 
     private EditText eTValExcl, eTValVatRate;
     private TextView txtFinalPrice, txtFinalPriceResult, txtFinalVAT, txtFinalVATResult;
@@ -30,7 +33,7 @@ public class HomeFragment extends Fragment {
     private boolean dontUpdate;
 
     public View onCreateView(@NonNull LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
-        homeViewModel = new ViewModelProvider(requireActivity()).get(HomeViewModel.class);
+        dataViewModel = new ViewModelProvider(requireActivity()).get(DataViewModel.class);
         View root = inflater.inflate(R.layout.fragment_home, container, false);
 
         eTValExcl = root.findViewById(R.id.eTValExcl);
@@ -52,8 +55,8 @@ public class HomeFragment extends Fragment {
     private void checkStoredValues() {
         dontUpdate = true;
         boolean set = false;
-        Double priceExc = homeViewModel.getLiveValueExclVat();
-        Integer vatRate = homeViewModel.getVatRate();
+        Double priceExc = dataViewModel.getLiveValueExclVat();
+        Integer vatRate = dataViewModel.getVatRate();
 
         if (priceExc != null && priceExc != 0) {
             eTValExcl.setText(String.valueOf(priceExc));
@@ -66,24 +69,12 @@ public class HomeFragment extends Fragment {
         }
 
         if (set && vatRate != null) {
-            if (checkAndUpdateVatRates(vatRate)) {
+            if (SharedStuff.checkAndUpdateVatRates(vatRate, lLVatRates, getResources())) {
                 dontUpdate = false;
             }
         }
         dontUpdate = false;
         update();
-    }
-
-    private boolean checkAndUpdateVatRates(Integer vatRate) {
-        boolean found = false;
-        for (int i = 0; i < VAT_RATES.length; i++) {
-            ((CardView) lLVatRates.getChildAt(i)).setCardBackgroundColor(getResources().getColor(R.color.colorWhite));
-            if (VAT_RATES[i] == vatRate) {
-                found = true;
-                lLVatRates.getChildAt(i).performClick();
-            }
-        }
-        return found;
     }
 
     private void attachVatRates() {
@@ -106,7 +97,7 @@ public class HomeFragment extends Fragment {
             });
             lLVatRates.addView(layout);
         }
-        lLVatRates.getChildAt(4).performClick();
+        lLVatRates.getChildAt(DataViewModel.VAT_DEFAULT_POS).performClick();
         setEmpty();
     }
 
@@ -140,9 +131,9 @@ public class HomeFragment extends Fragment {
             setEmpty();
             try {
                 int vat = Integer.parseInt(sVatRate);
-                homeViewModel.setVatRate(vat);
+                dataViewModel.setVatRate(vat);
                 dontUpdate = true;
-                checkAndUpdateVatRates(vat);
+                SharedStuff.checkAndUpdateVatRates(vat, lLVatRates, getResources());
                 dontUpdate = false;
             } catch (Exception e) {
                 e.printStackTrace();
@@ -162,7 +153,7 @@ public class HomeFragment extends Fragment {
             try {
                 vatRate = Integer.valueOf(sVatRate);
                 dontUpdate = true;
-                checkAndUpdateVatRates(vatRate);
+                SharedStuff.checkAndUpdateVatRates(vatRate, lLVatRates, getResources());
                 dontUpdate = false;
             } catch (Exception e) {
                 e.printStackTrace();
@@ -173,27 +164,23 @@ public class HomeFragment extends Fragment {
 
         final double vatAmount = priceExclVat * (vatRate / 100.0);
         final double valueIncVat = priceExclVat + vatAmount;
-        homeViewModel.setValueExclVat(priceExclVat);
-        homeViewModel.setValueInclVat(valueIncVat);
-        homeViewModel.setVatRate(vatRate);
+        dataViewModel.setValueExclVat(priceExclVat);
+        dataViewModel.setValueInclVat(valueIncVat);
+        dataViewModel.setVatRate(vatRate);
 
-        String finalPriceResult = removeTrailingZeros(String.format(Locale.ENGLISH, "%.5f", valueIncVat));
-        String finalVATResult = removeTrailingZeros(String.format(Locale.ENGLISH, "%.5f", vatAmount));
+        String finalPriceResult = SharedStuff.removeTrailingZeros(String.format(Locale.ENGLISH, "%.5f", valueIncVat));
+        String finalVATResult = SharedStuff.removeTrailingZeros(String.format(Locale.ENGLISH, "%.5f", vatAmount));
 
         txtFinalPriceResult.setText(finalPriceResult);
-        txtFinalPrice.setText(getString(R.string.home_total_price, vatRate));
+        txtFinalPrice.setText(getString(R.string.price_inclusive_vat_output_text, vatRate));
 
         txtFinalVATResult.setText(finalVATResult);
-        txtFinalVAT.setText(getString(R.string.home_total_vat));
+        txtFinalVAT.setText(getString(R.string.vat_amount));
 
         txtFinalPriceResult.setVisibility(View.VISIBLE);
         txtFinalPrice.setVisibility(View.VISIBLE);
         txtFinalVATResult.setVisibility(View.VISIBLE);
         txtFinalVAT.setVisibility(View.VISIBLE);
-    }
-
-    private String removeTrailingZeros(@NonNull String s) {
-        return s.contains(".") ? s.replaceAll("0*$", "").replaceAll("\\.$", "") : s;
     }
 
     private void setEmpty() {

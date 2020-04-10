@@ -42,10 +42,10 @@
                 android:layout_height="wrap_content"
                 android:layout_gravity="center_horizontal"
                 android:layout_marginTop="10dp"
-                android:hint="@string/home_input_val_excl"
+                android:hint="@string/price_exclusive_vat_hint"
                 app:passwordToggleTint="@color/colorAccent">
 
-                <EditText
+                <com.google.android.material.textfield.TextInputEditText
                     android:id="@+id/eTValExcl"
                     android:layout_width="@dimen/input_width"
                     android:layout_height="wrap_content"
@@ -65,13 +65,13 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="10dp"
-                    android:hint="@string/home_input_val_VAT"
+                    android:hint="@string/vat_rate"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toTopOf="parent"
                     app:passwordToggleTint="@color/colorAccent">
 
-                    <EditText
+                    <com.google.android.material.textfield.TextInputEditText
                         android:id="@+id/eTValVatRate"
                         android:layout_width="@dimen/input_width"
                         android:layout_height="wrap_content"
@@ -129,7 +129,7 @@
                 android:paddingStart="@dimen/text_title_padding"
                 android:paddingTop="@dimen/text_subtitle_padding_bottom"
                 android:paddingEnd="@dimen/text_title_padding"
-                android:text="@string/home_total_price"
+                android:text="@string/price_inclusive_vat_output_text"
                 android:textAlignment="center"
                 android:textSize="@dimen/text_title_size"
                 android:textStyle="bold" />
@@ -152,7 +152,7 @@
                 android:paddingStart="@dimen/text_title_padding"
                 android:paddingTop="@dimen/text_subtitle_padding_bottom"
                 android:paddingEnd="@dimen/text_title_padding"
-                android:text="@string/home_total_vat"
+                android:text="@string/vat_amount"
                 android:textAlignment="center"
                 android:textSize="@dimen/text_title_size"
                 android:textStyle="bold" />

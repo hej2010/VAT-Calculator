@@ -1,39 +1,41 @@
-package se.arctosoft.vatcalculator.ui.home;
+package se.arctosoft.vatcalculator.ui;
 
 import androidx.lifecycle.MutableLiveData;
 import androidx.lifecycle.ViewModel;
 
-public class HomeViewModel extends ViewModel {
+public class DataViewModel extends ViewModel {
+    public static final int[] VAT_RATES = {15, 16, 18, 19, 20, 21, 22, 25, 27};
+    public static final int VAT_DEFAULT_POS = 4;
     private MutableLiveData<Double> valueExclVat, valueInclVat;
     private MutableLiveData<Integer> vatRate;
 
-    public HomeViewModel() {
+    public DataViewModel() {
         valueExclVat = new MutableLiveData<>((double) 0);
         valueInclVat = new MutableLiveData<>((double) 0);
         vatRate = new MutableLiveData<>(20);
     }
 
-    Double getLiveValueExclVat() {
+    public Double getLiveValueExclVat() {
         return valueExclVat.getValue();
     }
 
-    void setValueExclVat(double valueExclVat) {
+    public void setValueExclVat(double valueExclVat) {
         this.valueExclVat.setValue(valueExclVat);
     }
 
-    Double getValueInclVat() {
+    public Double getLiveValueInclVat() {
         return valueInclVat.getValue();
     }
 
-    void setValueInclVat(double valueInclVat) {
+    public void setValueInclVat(double valueInclVat) {
         this.valueInclVat.setValue(valueInclVat);
     }
 
-    Integer getVatRate() {
+    public Integer getVatRate() {
         return vatRate.getValue();
     }
 
-    void setVatRate(int vatRate) {
+    public void setVatRate(int vatRate) {
         this.vatRate.setValue(vatRate);
     }
 }

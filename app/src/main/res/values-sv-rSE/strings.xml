@@ -7,9 +7,12 @@
     <string name="home_title">Lägg till moms</string>
     <string name="reverse_title">Räkna bort moms</string>
     <string name="about_title">Om</string>
-    <string name="home_subtitle">Räkna ut det slutgiltiga priset efter att moms läggs på</string>
-    <string name="home_input_val_excl">Pris exklusive moms</string>
-    <string name="home_input_val_VAT">Momssatts</string>
-    <string name="home_total_price">Pris inklusive %1$d%% moms:</string>
-    <string name="home_total_vat">Varav moms:</string>
+    <string name="home_subtitle">Räkna ut priset inklusive moms</string>
+    <string name="price_exclusive_vat_hint">Pris exklusive moms</string>
+    <string name="vat_rate">Momssatts</string>
+    <string name="price_inclusive_vat_output_text">Pris inklusive %1$d%% moms:</string>
+    <string name="vat_amount">Varav moms:</string>
+    <string name="reverse_subtitle">Räkna ut priset exlusive moms</string>
+    <string name="price_inclusive_vat_hint">Pris inklusive moms</string>
+    <string name="price_exclusive_vat_output_text">Pris exklusive %1$d%% moms:</string>
 </resources>
