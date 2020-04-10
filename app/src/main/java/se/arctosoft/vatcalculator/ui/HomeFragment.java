@@ -8,15 +8,12 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.EditText;
 import android.widget.LinearLayout;
-import android.widget.Spinner;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
 import androidx.cardview.widget.CardView;
 import androidx.fragment.app.Fragment;
 import androidx.lifecycle.ViewModelProvider;
-
-import org.json.JSONException;
 
 import java.util.Locale;
 
@@ -32,7 +29,6 @@ public class HomeFragment extends Fragment {
     private EditText eTValExcl, eTValVatRate;
     private TextView txtFinalPrice, txtFinalPriceResult, txtFinalVAT, txtFinalVATResult;
     private LinearLayout lLVatRates;
-    private Spinner spinner;
 
     private boolean dontUpdate;
 
@@ -47,14 +43,8 @@ public class HomeFragment extends Fragment {
         txtFinalVAT = root.findViewById(R.id.txtFinalVAT);
         txtFinalVATResult = root.findViewById(R.id.txtFinalVATResult);
         lLVatRates = root.findViewById(R.id.lLVatRates);
-        spinner = root.findViewById(R.id.spinner);
         dontUpdate = false;
 
-        try {
-            SharedStuff.setSpinner(requireActivity(), spinner);
-        } catch (JSONException e) {
-            e.printStackTrace();
-        }
         attachVatRates();
         attachListeners();
         checkStoredValues();
@@ -199,5 +189,4 @@ public class HomeFragment extends Fragment {
         txtFinalVATResult.setVisibility(View.INVISIBLE);
         txtFinalVAT.setVisibility(View.INVISIBLE);
     }
-
 }

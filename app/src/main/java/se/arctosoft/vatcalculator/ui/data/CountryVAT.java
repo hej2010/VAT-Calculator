@@ -1,6 +1,7 @@
 package se.arctosoft.vatcalculator.ui.data;
 
 import android.content.Context;
+import android.util.Log;
 import android.util.Pair;
 
 import androidx.annotation.NonNull;
@@ -33,12 +34,17 @@ public class CountryVAT {
         int standardRate = o.getInt("standard_rate");
         List<Pair<String, Double>> reducedRates = new ArrayList<>();
 
-        JSONObject rr = o.getJSONObject("reduced_rates");
-        for (Iterator<String> it = rr.keys(); it.hasNext(); ) {
-            String key = it.next();
-            try {
-                reducedRates.add(new Pair<>(key, o.getDouble(key)));
-            } catch (Exception ignored) {}
+        if (!o.isNull("reduced_rates")) {
+            JSONObject rr = o.getJSONObject("reduced_rates");
+            for (Iterator<String> it = rr.keys(); it.hasNext(); ) {
+                String key = it.next();
+                Log.e("FromJson", "fromJson: " + key);
+                try {
+                    reducedRates.add(new Pair<>(key, rr.getDouble(key)));
+                } catch (Exception e) {
+                    e.printStackTrace();
+                }
+            }
         }
         return new CountryVAT(countryName, standardRate, drawableID, reducedRates);
     }
@@ -57,5 +63,11 @@ public class CountryVAT {
 
     public int getDrawableID() {
         return drawableID;
+    }
+
+    @NonNull
+    @Override
+    public String toString() {
+        return countryName;
     }
 }

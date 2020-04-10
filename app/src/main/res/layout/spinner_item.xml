@@ -7,7 +7,7 @@
 
     <ImageView
         android:id="@+id/imgFlag"
-        android:layout_width="24dp"
+        android:layout_width="28dp"
         android:layout_height="24dp"
         android:src="@drawable/se" />
 
@@ -17,5 +17,6 @@
         android:layout_height="wrap_content"
         android:layout_toEndOf="@id/imgFlag"
         android:padding="2dp"
-        android:textSize="12sp" />
+        android:gravity="center_vertical"
+        android:textSize="14sp" />
 </RelativeLayout>

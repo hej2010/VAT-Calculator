@@ -43,13 +43,13 @@ public class VatAdapter extends ArrayAdapter<CountryVAT> {
 
     private View getCustomView(int position, ViewGroup parent) {
         View row = inflater.inflate(R.layout.spinner_item, parent, false);
-        CountryVAT country = statuses.get(position);
         ImageView imgFlag = row.findViewById(R.id.imgFlag);
         TextView txtName = row.findViewById(R.id.txtName);
         if (position == 0) {
             txtName.setText(context.getString(R.string.spinner_default_text));
             imgFlag.setImageDrawable(null);
         } else {
+            CountryVAT country = statuses.get(position - 1);
             txtName.setText(country.getCountryName());
             imgFlag.setImageResource(country.getDrawableID());
         }

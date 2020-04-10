@@ -39,7 +39,53 @@
                 android:layout_height="1dp"
                 android:layout_gravity="center_horizontal"
                 android:layout_marginBottom="@dimen/text_subtitle_padding_bottom"
-                android:alpha="0.5" />
+                android:alpha="0.5"
+                android:background="@color/colorPrimaryDark" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_horizontal"
+                android:layout_marginTop="@dimen/input_margin"
+                android:text="@string/spinner_help" />
+
+            <Spinner
+                android:id="@+id/spinner"
+                android:layout_width="@dimen/input_width"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_horizontal"
+                android:layout_margin="10dp"
+                android:spinnerMode="dropdown" />
+
+            <TextView
+                android:id="@+id/txtStandardRate"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:paddingStart="@dimen/text_title_padding"
+                android:paddingEnd="@dimen/text_title_padding"
+                android:paddingBottom="@dimen/text_subtitle_padding_bottom"
+                android:textAlignment="center"
+                android:textIsSelectable="true"
+                android:textSize="@dimen/text_subtitle_size" />
+
+            <TextView
+                android:id="@+id/txtReducedRates"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:paddingStart="@dimen/text_title_padding"
+                android:paddingEnd="@dimen/text_title_padding"
+                android:paddingBottom="@dimen/text_subtitle_padding_bottom"
+                android:textAlignment="center"
+                android:textIsSelectable="true"
+                android:textSize="@dimen/text_subtitle_size" />
+
+            <View
+                android:layout_width="@dimen/divider_width_smaller"
+                android:layout_height="1dp"
+                android:layout_gravity="center_horizontal"
+                android:layout_marginBottom="30dp"
+                android:alpha="0.1"
+                android:background="@color/colorPrimaryDark" />
 
             <TextView
                 android:layout_width="match_parent"
@@ -56,11 +102,12 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_gravity="center_horizontal"
+                android:layout_marginStart="@dimen/text_title_padding"
+                android:layout_marginEnd="@dimen/text_title_padding"
+                android:layout_marginBottom="@dimen/text_subtitle_padding_bottom"
                 android:backgroundTint="@color/colorPrimary"
-                android:paddingStart="@dimen/text_title_padding"
-                android:paddingEnd="@dimen/text_title_padding"
-                android:paddingBottom="@dimen/text_subtitle_padding_bottom"
-                android:text="@string/about_rate_button" />
+                android:text="@string/about_rate_button"
+                android:textColor="@color/colorWhite" />
 
             <View
                 android:layout_width="@dimen/divider_width_smaller"
@@ -68,7 +115,8 @@
                 android:layout_gravity="center_horizontal"
                 android:layout_marginTop="@dimen/text_subtitle_padding_bottom"
                 android:layout_marginBottom="@dimen/text_subtitle_padding_bottom"
-                android:alpha="0.5" />
+                android:alpha="0.1"
+                android:background="@color/colorPrimaryDark" />
 
             <TextView
                 android:layout_width="match_parent"
