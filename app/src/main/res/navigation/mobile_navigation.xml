@@ -8,18 +8,18 @@
     <fragment
         android:id="@+id/navigation_home"
         android:name="se.arctosoft.vatcalculator.ui.home.HomeFragment"
-        android:label="@string/title_home"
+        android:label="@string/menu_home"
         tools:layout="@layout/fragment_home" />
 
     <fragment
         android:id="@+id/navigation_reverse"
         android:name="se.arctosoft.vatcalculator.ui.reverse.ReverseFragment"
-        android:label="@string/title_reverse"
+        android:label="@string/menu_reverse"
         tools:layout="@layout/fragment_reverse" />
 
     <fragment
         android:id="@+id/navigation_about"
         android:name="se.arctosoft.vatcalculator.ui.about.AboutFragment"
-        android:label="@string/title_about"
+        android:label="@string/menu_about"
         tools:layout="@layout/fragment_about" />
 </navigation>
