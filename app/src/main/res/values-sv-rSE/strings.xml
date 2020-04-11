@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <string name="app_name">Momskalkulator</string>
+    <string name="app_name">Momskalkylator</string>
     <string name="menu_home">Lägg till moms</string>
     <string name="menu_reverse">Räkna bort moms</string>
     <string name="menu_about">Om</string>

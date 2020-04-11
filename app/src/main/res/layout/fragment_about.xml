@@ -123,7 +123,7 @@
                 android:layout_height="wrap_content"
                 android:paddingStart="@dimen/text_title_padding"
                 android:paddingEnd="@dimen/text_title_padding"
-                android:paddingBottom="@dimen/text_subtitle_padding_bottom"
+                android:paddingBottom="100dp"
                 android:text="@string/about_created"
                 android:textAlignment="center"
                 android:textSize="@dimen/text_subtitle_size" />
