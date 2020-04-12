@@ -105,9 +105,9 @@
                 android:layout_marginStart="@dimen/text_title_padding"
                 android:layout_marginEnd="@dimen/text_title_padding"
                 android:layout_marginBottom="@dimen/text_subtitle_padding_bottom"
-                android:backgroundTint="@color/colorPrimary"
+                android:backgroundTint="@color/colorAccent"
                 android:text="@string/about_rate_button"
-                android:textColor="@color/colorWhite" />
+                android:textColor="@color/colorPrimaryDark" />
 
             <View
                 android:layout_width="@dimen/divider_width_smaller"
