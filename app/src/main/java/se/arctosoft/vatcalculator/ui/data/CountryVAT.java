@@ -16,6 +16,7 @@ import java.util.Locale;
 import se.arctosoft.vatcalculator.BuildConfig;
 
 public class CountryVAT {
+    private static final String TAG = "CountryVAT";
     private final String countryName;
     private final int standardRate, drawableID;
     private final List<Pair<String, Double>> reducedRates;
@@ -25,6 +26,7 @@ public class CountryVAT {
         this.standardRate = standardRate;
         this.drawableID = drawableID;
         this.reducedRates = reducedRates;
+        //Log.e(TAG, "CountryVAT: " + countryName + ", " + standardRate + ", " + Arrays.toString(reducedRates.toArray()));
     }
 
     public static CountryVAT fromJson(@NonNull String countryCode, @NonNull JSONObject o, @NonNull Context context) throws JSONException {

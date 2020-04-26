@@ -31,6 +31,11 @@ public class VatAdapter extends ArrayAdapter<CountryVAT> {
     }
 
     @Override
+    public int getCount() {
+        return statuses.size() + 1;
+    }
+
+    @Override
     public View getDropDownView(int position, View convertView, @NonNull ViewGroup parent) {
         return getCustomView(position, parent);
     }
@@ -49,7 +54,7 @@ public class VatAdapter extends ArrayAdapter<CountryVAT> {
             txtName.setText(context.getString(R.string.spinner_default_text));
             imgFlag.setImageDrawable(null);
         } else {
-            CountryVAT country = statuses.get(position);
+            CountryVAT country = statuses.get(position - 1);
             txtName.setText(country.getCountryName());
             imgFlag.setImageResource(country.getDrawableID());
         }

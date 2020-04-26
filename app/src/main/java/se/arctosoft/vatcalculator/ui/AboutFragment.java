@@ -3,7 +3,6 @@ package se.arctosoft.vatcalculator.ui;
 import android.content.Intent;
 import android.net.Uri;
 import android.os.Bundle;
-import android.util.Log;
 import android.util.Pair;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -63,7 +62,7 @@ public class AboutFragment extends Fragment implements AdapterView.OnItemSelecte
         if (position == 0) {
             hideRates();
         } else {
-            CountryVAT c = (CountryVAT) parent.getItemAtPosition(position);
+            CountryVAT c = (CountryVAT) parent.getItemAtPosition(position - 1);
 
             txtStandardRate.setText(getString(R.string.spinner_item_standard_rate, c.getStandardRate()));
 
