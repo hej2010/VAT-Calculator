@@ -14,6 +14,9 @@
     <string name="about_subtitle">An app to add or remove VAT easily.</string>
     <string name="about_rate">Like the app?</string>
     <string name="about_rate_button">Rate it on Google Play</string>
+    <string name="about_vat_howto_title">VAT calculations:</string>
+    <string name="about_vat_howto">Adding 21% VAT:\n(price excl. VAT) * 1.21\n\n
+        Removing 21% VAT:\n(price incl. VAT) / 1.21</string>
 
     <string name="spinner_items">Common VAT rates:</string>
     <string name="spinner_default_text">Select a country</string>

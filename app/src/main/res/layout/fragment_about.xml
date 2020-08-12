@@ -47,7 +47,8 @@
                 android:layout_height="wrap_content"
                 android:layout_gravity="center_horizontal"
                 android:layout_marginTop="@dimen/input_margin"
-                android:text="@string/spinner_help" />
+                android:text="@string/spinner_help"
+                android:textStyle="bold" />
 
             <Spinner
                 android:id="@+id/spinner"
@@ -77,6 +78,35 @@
                 android:paddingBottom="@dimen/text_subtitle_padding_bottom"
                 android:textAlignment="center"
                 android:textIsSelectable="true"
+                android:textSize="@dimen/text_subtitle_size" />
+
+            <View
+                android:layout_width="@dimen/divider_width_smaller"
+                android:layout_height="1dp"
+                android:layout_gravity="center_horizontal"
+                android:layout_marginBottom="30dp"
+                android:alpha="0.1"
+                android:background="@color/colorPrimaryDark" />
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:paddingStart="@dimen/text_title_padding"
+                android:paddingEnd="@dimen/text_title_padding"
+                android:paddingBottom="@dimen/text_subtitle_padding_bottom"
+                android:text="@string/about_vat_howto_title"
+                android:textAlignment="center"
+                android:textSize="@dimen/text_subtitle_size"
+                android:textStyle="bold" />
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:paddingStart="@dimen/text_title_padding"
+                android:paddingEnd="@dimen/text_title_padding"
+                android:paddingBottom="@dimen/text_subtitle_padding_bottom"
+                android:text="@string/about_vat_howto"
+                android:textAlignment="center"
                 android:textSize="@dimen/text_subtitle_size" />
 
             <View

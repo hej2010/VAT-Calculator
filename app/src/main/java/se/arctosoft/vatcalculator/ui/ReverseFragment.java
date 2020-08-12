@@ -11,7 +11,6 @@ import android.widget.LinearLayout;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
-import androidx.cardview.widget.CardView;
 import androidx.fragment.app.Fragment;
 import androidx.lifecycle.ViewModelProvider;
 
@@ -19,8 +18,6 @@ import java.util.Locale;
 
 import se.arctosoft.vatcalculator.R;
 import se.arctosoft.vatcalculator.ui.data.DataViewModel;
-
-import static se.arctosoft.vatcalculator.ui.data.DataViewModel.VAT_RATES;
 
 public class ReverseFragment extends Fragment {
     private static final String TAG = "ReverseFragment";
@@ -45,7 +42,7 @@ public class ReverseFragment extends Fragment {
         lLVatRates = root.findViewById(R.id.lLVatRates);
         dontUpdate = false;
 
-        attachVatRates();
+        HomeFragment.attachVatRates(requireContext(), lLVatRates, eTValVatRate);
         attachListeners();
         checkStoredValues();
 
@@ -77,30 +74,6 @@ public class ReverseFragment extends Fragment {
         update();
     }
 
-    private void attachVatRates() {
-        LayoutInflater inflater = LayoutInflater.from(requireContext());
-        for (int vatRate : VAT_RATES) {
-            CardView layout = (CardView) inflater.inflate(R.layout.vat_rate_item, lLVatRates, false);
-            layout.setTag(vatRate);
-
-            TextView textView = layout.findViewById(R.id.txtVatRate);
-            textView.setText(getString(R.string.percentage_placeholder, vatRate));
-
-            layout.setOnClickListener(v -> {
-                for (int i = 0; i < VAT_RATES.length; i++) {
-                    ((CardView) lLVatRates.getChildAt(i)).setCardBackgroundColor(getResources().getColor(R.color.colorWhite));
-                }
-                if (v instanceof CardView) {
-                    ((CardView) v).setCardBackgroundColor(getResources().getColor(R.color.colorAccent));
-                }
-                eTValVatRate.setText(String.valueOf(v.getTag()));
-            });
-            lLVatRates.addView(layout);
-        }
-        lLVatRates.getChildAt(DataViewModel.VAT_DEFAULT_POS).performClick();
-        setEmpty();
-    }
-
     private void attachListeners() {
         TextWatcher t = new TextWatcher() {
             @Override
@@ -124,7 +97,7 @@ public class ReverseFragment extends Fragment {
 
     private void update() {
         double priceInclVat;
-        Integer vatRate;
+        int vatRate;
         String sPriceInclVat = eTValIncl.getText().toString();
         String sVatRate = eTValVatRate.getText().toString();
         if (sPriceInclVat.isEmpty() || sVatRate.isEmpty()) {
@@ -151,7 +124,7 @@ public class ReverseFragment extends Fragment {
                 return;
             }
             try {
-                vatRate = Integer.valueOf(sVatRate);
+                vatRate = Integer.parseInt(sVatRate);
                 dontUpdate = true;
                 SharedStuff.checkAndUpdateVatRates(vatRate, lLVatRates, getResources());
                 dontUpdate = false;

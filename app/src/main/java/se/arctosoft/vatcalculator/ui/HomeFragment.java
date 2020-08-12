@@ -1,5 +1,6 @@
 package se.arctosoft.vatcalculator.ui;
 
+import android.content.Context;
 import android.os.Bundle;
 import android.text.Editable;
 import android.text.TextWatcher;
@@ -17,6 +18,7 @@ import androidx.lifecycle.ViewModelProvider;
 
 import java.util.Locale;
 
+import se.arctosoft.vatcalculator.MainActivity;
 import se.arctosoft.vatcalculator.R;
 import se.arctosoft.vatcalculator.ui.data.DataViewModel;
 
@@ -45,7 +47,8 @@ public class HomeFragment extends Fragment {
         lLVatRates = root.findViewById(R.id.lLVatRates);
         dontUpdate = false;
 
-        attachVatRates();
+        attachVatRates(requireContext(), lLVatRates, eTValVatRate);
+        setEmpty();
         attachListeners();
         checkStoredValues();
 
@@ -77,28 +80,31 @@ public class HomeFragment extends Fragment {
         update();
     }
 
-    private void attachVatRates() {
-        LayoutInflater inflater = LayoutInflater.from(requireContext());
+    public static void attachVatRates(Context context, LinearLayout lLVatRates, EditText eTValVatRate) {
+        LayoutInflater inflater = LayoutInflater.from(context);
         for (int vatRate : VAT_RATES) {
             CardView layout = (CardView) inflater.inflate(R.layout.vat_rate_item, lLVatRates, false);
             layout.setTag(vatRate);
 
             TextView textView = layout.findViewById(R.id.txtVatRate);
-            textView.setText(getString(R.string.percentage_placeholder, vatRate));
+            textView.setText(context.getString(R.string.percentage_placeholder, vatRate));
 
             layout.setOnClickListener(v -> {
                 for (int i = 0; i < VAT_RATES.length; i++) {
-                    ((CardView) lLVatRates.getChildAt(i)).setCardBackgroundColor(getResources().getColor(R.color.colorWhite));
+                    ((CardView) lLVatRates.getChildAt(i)).setCardBackgroundColor(context.getResources().getColor(R.color.colorWhite));
                 }
                 if (v instanceof CardView) {
-                    ((CardView) v).setCardBackgroundColor(getResources().getColor(R.color.colorAccent));
+                    ((CardView) v).setCardBackgroundColor(context.getResources().getColor(R.color.colorAccent));
                 }
                 eTValVatRate.setText(String.valueOf(v.getTag()));
             });
             lLVatRates.addView(layout);
         }
-        lLVatRates.getChildAt(DataViewModel.VAT_DEFAULT_POS).performClick();
-        setEmpty();
+        if (MainActivity.isSwedishLocale) {
+            lLVatRates.getChildAt(DataViewModel.VAT_SE_POS).performClick();
+        } else {
+            lLVatRates.getChildAt(DataViewModel.VAT_DEFAULT_POS).performClick();
+        }
     }
 
     private void attachListeners() {
@@ -124,7 +130,7 @@ public class HomeFragment extends Fragment {
 
     private void update() {
         double priceExclVat;
-        Integer vatRate;
+        int vatRate;
         String sPriceExclVat = eTValExcl.getText().toString();
         String sVatRate = eTValVatRate.getText().toString();
         if (sPriceExclVat.isEmpty() || sVatRate.isEmpty()) {
@@ -151,7 +157,7 @@ public class HomeFragment extends Fragment {
                 return;
             }
             try {
-                vatRate = Integer.valueOf(sVatRate);
+                vatRate = Integer.parseInt(sVatRate);
                 dontUpdate = true;
                 SharedStuff.checkAndUpdateVatRates(vatRate, lLVatRates, getResources());
                 dontUpdate = false;

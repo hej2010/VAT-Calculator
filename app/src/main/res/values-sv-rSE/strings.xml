@@ -21,6 +21,9 @@
     <string name="price_exclusive_vat_output_text">Pris exklusive %1$d%% moms:</string>
     <string name="vat_rate">Momssatts</string>
     <string name="vat_amount">Varav moms:</string>
+    <string name="about_vat_howto_title">Momsberäkningar:</string>
+    <string name="about_vat_howto">Lägga på 25% moms:\n(pris exkl. moms) * 1.25\n\n
+        Dra av 25% moms:\n(pris inkl. moms) / 1.25</string>
 
     <string name="spinner_items">Vanliga momssatser:</string>
     <string name="spinner_default_text">Välj ett land</string>
