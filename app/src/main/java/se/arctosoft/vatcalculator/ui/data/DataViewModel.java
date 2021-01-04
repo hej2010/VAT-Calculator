@@ -9,8 +9,8 @@ public class DataViewModel extends ViewModel {
     public static final int[] VAT_RATES = {15, 16, 18, 19, 20, 21, 22, 25, 27};
     public static final int VAT_DEFAULT_POS = 4;
     public static final int VAT_SE_POS = 7;
-    private MutableLiveData<Double> valueExclVat, valueInclVat;
-    private MutableLiveData<Integer> vatRate;
+    private final MutableLiveData<Double> valueExclVat, valueInclVat;
+    private final MutableLiveData<Integer> vatRate;
 
     public DataViewModel() {
         valueExclVat = new MutableLiveData<>((double) 0);

@@ -4,20 +4,14 @@ import android.os.Bundle;
 
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.os.ConfigurationCompat;
-import androidx.fragment.app.Fragment;
-import androidx.fragment.app.FragmentTransaction;
 import androidx.navigation.NavController;
-import androidx.navigation.Navigation;
+import androidx.navigation.fragment.NavHostFragment;
 import androidx.navigation.ui.AppBarConfiguration;
 import androidx.navigation.ui.NavigationUI;
 
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 
 import java.util.Locale;
-
-import se.arctosoft.vatcalculator.ui.AboutFragment;
-import se.arctosoft.vatcalculator.ui.HomeFragment;
-import se.arctosoft.vatcalculator.ui.ReverseFragment;
 
 public class MainActivity extends AppCompatActivity {
     public static boolean isSwedishLocale;
@@ -39,11 +33,12 @@ public class MainActivity extends AppCompatActivity {
         String country = current.getCountry();
         isSwedishLocale = country.equals("SE");
 
-        NavController navController = Navigation.findNavController(this, R.id.nav_host_fragment);
+        NavHostFragment navHostFragment = (NavHostFragment) getSupportFragmentManager().findFragmentById(R.id.nav_host_fragment);
+        NavController navController = navHostFragment.getNavController(); //Navigation.findNavController(this, R.id.nav_host_fragment);
         NavigationUI.setupActionBarWithNavController(this, navController, appBarConfiguration);
         NavigationUI.setupWithNavController(navView, navController);
 
-        navView.setOnNavigationItemSelectedListener(item -> {
+        /*navView.setOnNavigationItemSelectedListener(item -> {
             Fragment selectedFragment = null;
 
             int itemId = item.getItemId();
@@ -61,9 +56,9 @@ public class MainActivity extends AppCompatActivity {
             //transaction.addToBackStack(null);
             transaction.commit();
             return true;
-        });
-        navView.setOnNavigationItemReselectedListener(item -> {
-        });
+        });*/
+        /*navView.setOnNavigationItemReselectedListener(item -> {
+        });*/
     }
 
 }
