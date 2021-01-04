@@ -46,16 +46,13 @@ public class MainActivity extends AppCompatActivity {
         navView.setOnNavigationItemSelectedListener(item -> {
             Fragment selectedFragment = null;
 
-            switch (item.getItemId()) {
-                case R.id.navigation_home:
-                    selectedFragment = new HomeFragment();
-                    break;
-                case R.id.navigation_reverse:
-                    selectedFragment = new ReverseFragment();
-                    break;
-                case R.id.navigation_about:
-                    selectedFragment = new AboutFragment();
-                    break;
+            int itemId = item.getItemId();
+            if (itemId == R.id.navigation_home) {
+                selectedFragment = new HomeFragment();
+            } else if (itemId == R.id.navigation_reverse) {
+                selectedFragment = new ReverseFragment();
+            } else if (itemId == R.id.navigation_about) {
+                selectedFragment = new AboutFragment();
             }
 
             FragmentTransaction transaction = getSupportFragmentManager().beginTransaction();
