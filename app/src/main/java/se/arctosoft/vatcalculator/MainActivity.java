@@ -30,7 +30,7 @@ public class MainActivity extends AppCompatActivity {
                 .build();
 
         Locale current = ConfigurationCompat.getLocales(getResources().getConfiguration()).get(0);
-        String country = current.getCountry();
+        String country = current == null ? "" : current.getCountry();
         isSwedishLocale = country.equals("SE");
 
         NavHostFragment navHostFragment = (NavHostFragment) getSupportFragmentManager().findFragmentById(R.id.nav_host_fragment);
