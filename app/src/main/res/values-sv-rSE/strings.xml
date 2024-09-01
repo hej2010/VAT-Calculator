@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
     <string name="app_name">Momskalkylator</string>
-    <string name="about_created">App av Arctosoft AB.\nVersion 1.3.1</string>
+    <string name="about_created">App av Arctosoft AB.\nVersion 1.4.0</string>
     <string name="menu_home">Lägg till moms</string>
     <string name="menu_reverse">Räkna bort moms</string>
     <string name="menu_about">Om</string>
