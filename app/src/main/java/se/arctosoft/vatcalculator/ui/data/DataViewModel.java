@@ -6,11 +6,11 @@ import androidx.lifecycle.ViewModel;
 import se.arctosoft.vatcalculator.MainActivity;
 
 public class DataViewModel extends ViewModel {
-    public static final int[] VAT_RATES = {15, 16, 18, 19, 20, 21, 22, 25, 27};
+    public static final double[] VAT_RATES = {15, 16, 18, 19, 20, 21, 22, 25, 25.5, 27};
     public static final int VAT_DEFAULT_POS = 4;
     public static final int VAT_SE_POS = 7;
     private final MutableLiveData<Double> valueExclVat, valueInclVat;
-    private final MutableLiveData<Integer> vatRate;
+    private final MutableLiveData<Double> vatRate;
 
     public DataViewModel() {
         valueExclVat = new MutableLiveData<>((double) 0);
@@ -34,11 +34,11 @@ public class DataViewModel extends ViewModel {
         this.valueInclVat.setValue(valueInclVat);
     }
 
-    public Integer getVatRate() {
+    public Double getVatRate() {
         return vatRate.getValue();
     }
 
-    public void setVatRate(int vatRate) {
+    public void setVatRate(double vatRate) {
         this.vatRate.setValue(vatRate);
     }
 }

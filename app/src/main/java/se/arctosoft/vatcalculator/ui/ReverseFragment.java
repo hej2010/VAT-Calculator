@@ -53,7 +53,7 @@ public class ReverseFragment extends Fragment {
         dontUpdate = true;
         boolean set = false;
         Double priceIncl = dataViewModel.getLiveValueInclVat();
-        Integer vatRate = dataViewModel.getVatRate();
+        Double vatRate = dataViewModel.getVatRate();
 
         if (priceIncl != null && priceIncl != 0) {
             eTValIncl.setText(String.valueOf(priceIncl));
@@ -96,25 +96,24 @@ public class ReverseFragment extends Fragment {
     }
 
     private void update() {
-        double priceInclVat;
-        int vatRate;
+        double priceInclVat, vatRate;
         String sPriceInclVat = eTValIncl.getText().toString();
         String sVatRate = eTValVatRate.getText().toString();
+        if (sVatRate.endsWith(".") || sVatRate.endsWith(",")) {
+            return;
+        }
         if (sPriceInclVat.isEmpty() || sVatRate.isEmpty()) {
             setEmpty();
             try {
-                int vat = Integer.parseInt(sVatRate);
+                double vat = Double.parseDouble(sVatRate);
                 dataViewModel.setVatRate(vat);
-                dontUpdate = true;
-                SharedStuff.checkAndUpdateVatRates(vat, lLVatRates, getResources());
-                dontUpdate = false;
             } catch (Exception e) {
                 e.printStackTrace();
             }
             return;
         } else {
             try {
-                if (sPriceInclVat.endsWith(".")) {
+                if (sPriceInclVat.endsWith(".") || sPriceInclVat.endsWith(",")) {
                     sPriceInclVat = sPriceInclVat.replace(".", "");
                 }
                 priceInclVat = Double.parseDouble(sPriceInclVat);
@@ -124,10 +123,7 @@ public class ReverseFragment extends Fragment {
                 return;
             }
             try {
-                vatRate = Integer.parseInt(sVatRate);
-                dontUpdate = true;
-                SharedStuff.checkAndUpdateVatRates(vatRate, lLVatRates, getResources());
-                dontUpdate = false;
+                vatRate = Double.parseDouble(sVatRate);
             } catch (Exception e) {
                 e.printStackTrace();
                 setEmpty();
@@ -146,7 +142,7 @@ public class ReverseFragment extends Fragment {
         String finalVATResult = SharedStuff.removeTrailingZeros(String.format(Locale.ENGLISH, "%.5f", vatAmount));
 
         txtFinalPriceResult.setText(finalPriceResult);
-        txtFinalPrice.setText(getString(R.string.price_exclusive_vat_output_text, vatRate));
+        txtFinalPrice.setText(getString(R.string.price_exclusive_vat_output_text, SharedStuff.doubleToString(vatRate)));
 
         txtFinalVATResult.setText(finalVATResult);
         txtFinalVAT.setText(getString(R.string.vat_amount));

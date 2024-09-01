@@ -16,9 +16,9 @@
     <string name="about_rate_button">Betygsätt på Google Play</string>
 
     <string name="price_exclusive_vat_hint">Pris exklusive moms</string>
-    <string name="price_inclusive_vat_output_text">Pris inklusive %1$d%% moms:</string>
+    <string name="price_inclusive_vat_output_text">Pris inklusive %1$s%% moms:</string>
     <string name="price_inclusive_vat_hint">Pris inklusive moms</string>
-    <string name="price_exclusive_vat_output_text">Pris exklusive %1$d%% moms:</string>
+    <string name="price_exclusive_vat_output_text">Pris exklusive %1$s%% moms:</string>
     <string name="vat_rate">Momssatts</string>
     <string name="vat_amount">Varav moms:</string>
     <string name="about_vat_howto_title">Momsberäkningar:</string>
@@ -29,6 +29,6 @@
     <string name="spinner_default_text">Välj ett land</string>
     <string name="spinner_help">Välj ett land från listan för att se dess momssatser:</string>
     <string name="spinner_more_in_about">Momssatser för varje land kan ses i Om</string>
-    <string name="spinner_item_standard_rate">Standard momssats: %1$d%%</string>
+    <string name="spinner_item_standard_rate">Standard momssats: %1$s%%</string>
     <string name="spinner_item_reduced_rates">Reducerade momssatser:\n%1$s</string>
 </resources>

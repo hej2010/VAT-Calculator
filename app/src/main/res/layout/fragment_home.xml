@@ -77,8 +77,8 @@
                         android:layout_height="wrap_content"
                         android:layout_margin="@dimen/input_margin"
                         android:importantForAutofill="no"
-                        android:inputType="number"
-                        android:maxLength="2"
+                        android:inputType="numberDecimal"
+                        android:maxLength="4"
                         android:maxLines="1" />
                 </com.google.android.material.textfield.TextInputLayout>
 

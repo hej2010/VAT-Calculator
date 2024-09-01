@@ -1,9 +1,12 @@
 package se.arctosoft.vatcalculator.ui;
 
+import static se.arctosoft.vatcalculator.ui.data.DataViewModel.VAT_RATES;
+
 import android.content.Context;
 import android.os.Bundle;
 import android.text.Editable;
 import android.text.TextWatcher;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -21,8 +24,6 @@ import java.util.Locale;
 import se.arctosoft.vatcalculator.MainActivity;
 import se.arctosoft.vatcalculator.R;
 import se.arctosoft.vatcalculator.ui.data.DataViewModel;
-
-import static se.arctosoft.vatcalculator.ui.data.DataViewModel.VAT_RATES;
 
 public class HomeFragment extends Fragment {
     private static final String TAG = "HomeFragment";
@@ -59,7 +60,7 @@ public class HomeFragment extends Fragment {
         dontUpdate = true;
         boolean set = false;
         Double priceExc = dataViewModel.getLiveValueExclVat();
-        Integer vatRate = dataViewModel.getVatRate();
+        Double vatRate = dataViewModel.getVatRate();
 
         if (priceExc != null && priceExc != 0) {
             eTValExcl.setText(String.valueOf(priceExc));
@@ -82,12 +83,12 @@ public class HomeFragment extends Fragment {
 
     public static void attachVatRates(Context context, LinearLayout lLVatRates, EditText eTValVatRate) {
         LayoutInflater inflater = LayoutInflater.from(context);
-        for (int vatRate : VAT_RATES) {
+        for (double vatRate : VAT_RATES) {
             CardView layout = (CardView) inflater.inflate(R.layout.vat_rate_item, lLVatRates, false);
             layout.setTag(vatRate);
 
             TextView textView = layout.findViewById(R.id.txtVatRate);
-            textView.setText(context.getString(R.string.percentage_placeholder, vatRate));
+            textView.setText(context.getString(R.string.percentage_placeholder, SharedStuff.doubleToString(vatRate)));
 
             layout.setOnClickListener(v -> {
                 for (int i = 0; i < VAT_RATES.length; i++) {
@@ -129,25 +130,24 @@ public class HomeFragment extends Fragment {
     }
 
     private void update() {
-        double priceExclVat;
-        int vatRate;
+        double priceExclVat, vatRate;
         String sPriceExclVat = eTValExcl.getText().toString();
         String sVatRate = eTValVatRate.getText().toString();
+        if (sVatRate.endsWith(".") || sVatRate.endsWith(",")) {
+            return;
+        }
         if (sPriceExclVat.isEmpty() || sVatRate.isEmpty()) {
             setEmpty();
             try {
-                int vat = Integer.parseInt(sVatRate);
+                double vat = Double.parseDouble(sVatRate);
                 dataViewModel.setVatRate(vat);
-                dontUpdate = true;
-                SharedStuff.checkAndUpdateVatRates(vat, lLVatRates, getResources());
-                dontUpdate = false;
             } catch (Exception e) {
                 e.printStackTrace();
             }
             return;
         } else {
             try {
-                if (sPriceExclVat.endsWith(".")) {
+                if (sPriceExclVat.endsWith(".") || sPriceExclVat.endsWith(",")) {
                     sPriceExclVat = sPriceExclVat.replace(".", "");
                 }
                 priceExclVat = Double.parseDouble(sPriceExclVat);
@@ -157,10 +157,7 @@ public class HomeFragment extends Fragment {
                 return;
             }
             try {
-                vatRate = Integer.parseInt(sVatRate);
-                dontUpdate = true;
-                SharedStuff.checkAndUpdateVatRates(vatRate, lLVatRates, getResources());
-                dontUpdate = false;
+                vatRate = Double.parseDouble(sVatRate);
             } catch (Exception e) {
                 e.printStackTrace();
                 setEmpty();
@@ -178,7 +175,7 @@ public class HomeFragment extends Fragment {
         String finalVATResult = SharedStuff.removeTrailingZeros(String.format(Locale.ENGLISH, "%.5f", vatAmount));
 
         txtFinalPriceResult.setText(finalPriceResult);
-        txtFinalPrice.setText(getString(R.string.price_inclusive_vat_output_text, vatRate));
+        txtFinalPrice.setText(getString(R.string.price_inclusive_vat_output_text, SharedStuff.doubleToString(vatRate)));
 
         txtFinalVATResult.setText(finalVATResult);
         txtFinalVAT.setText(getString(R.string.vat_amount));

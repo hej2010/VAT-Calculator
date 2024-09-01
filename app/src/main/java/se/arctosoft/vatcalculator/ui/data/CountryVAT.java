@@ -18,10 +18,11 @@ import se.arctosoft.vatcalculator.BuildConfig;
 public class CountryVAT {
     private static final String TAG = "CountryVAT";
     private final String countryName;
-    private final int standardRate, drawableID;
+    private final double standardRate;
+    private final int drawableID;
     private final List<Pair<String, Double>> reducedRates;
 
-    private CountryVAT(String countryName, int standardRate, int drawableID, List<Pair<String, Double>> reducedRates) {
+    private CountryVAT(String countryName, double standardRate, int drawableID, List<Pair<String, Double>> reducedRates) {
         this.countryName = countryName;
         this.standardRate = standardRate;
         this.drawableID = drawableID;
@@ -32,7 +33,7 @@ public class CountryVAT {
     public static CountryVAT fromJson(@NonNull String countryCode, @NonNull JSONObject o, @NonNull Context context) throws JSONException {
         int drawableID = context.getResources().getIdentifier(countryCode.toLowerCase(Locale.ENGLISH), "drawable", BuildConfig.APPLICATION_ID);
         String countryName = o.getString("country_name");
-        int standardRate = o.getInt("standard_rate");
+        double standardRate = o.getDouble("standard_rate");
         List<Pair<String, Double>> reducedRates = new ArrayList<>();
 
         if (!o.isNull("reduced_rates")) {
@@ -54,7 +55,7 @@ public class CountryVAT {
         return countryName;
     }
 
-    public int getStandardRate() {
+    public double getStandardRate() {
         return standardRate;
     }
 

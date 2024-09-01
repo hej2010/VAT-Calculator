@@ -64,7 +64,7 @@ public class AboutFragment extends Fragment implements AdapterView.OnItemSelecte
         } else {
             CountryVAT c = (CountryVAT) parent.getItemAtPosition(position - 1);
 
-            txtStandardRate.setText(getString(R.string.spinner_item_standard_rate, c.getStandardRate()));
+            txtStandardRate.setText(getString(R.string.spinner_item_standard_rate, SharedStuff.doubleToString(c.getStandardRate())));
 
             StringBuilder sb = new StringBuilder();
             for (Pair<String, Double> p : c.getReducedRates()) {

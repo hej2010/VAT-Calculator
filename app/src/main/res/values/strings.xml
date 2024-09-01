@@ -22,17 +22,17 @@
     <string name="spinner_default_text">Select a country</string>
     <string name="spinner_more_in_about">VAT rates for each country can be found in About</string>
     <string name="spinner_help">Choose a country from the list to see its VAT rates:</string>
-    <string name="spinner_item_standard_rate">Standard rate: %1$d%%</string>
+    <string name="spinner_item_standard_rate">Standard rate: %1$s%%</string>
     <string name="spinner_item_reduced_rates">Reduced rates:\n%1$s</string>
 
     <string name="price_exclusive_vat_hint">Price exclusive of VAT</string>
     <string name="price_inclusive_vat_hint">Price inclusive of VAT</string>
     <string name="vat_rate">VAT rate</string>
-    <string name="price_inclusive_vat_output_text">Price inclusive %1$d%% VAT:</string>
-    <string name="price_exclusive_vat_output_text">Price exclusive %1$d%% VAT:</string>
+    <string name="price_inclusive_vat_output_text">Price inclusive %1$s%% VAT:</string>
+    <string name="price_exclusive_vat_output_text">Price exclusive %1$s%% VAT:</string>
     <string name="vat_amount">VAT amount:</string>
 
     <string name="percentage" translatable="false">%</string>
-    <string name="percentage_placeholder" translatable="false">%1$d%%</string>
+    <string name="percentage_placeholder" translatable="false">%1$s%%</string>
 
 </resources>

@@ -37,28 +37,6 @@ public class MainActivity extends AppCompatActivity {
         NavController navController = navHostFragment.getNavController(); //Navigation.findNavController(this, R.id.nav_host_fragment);
         NavigationUI.setupActionBarWithNavController(this, navController, appBarConfiguration);
         NavigationUI.setupWithNavController(navView, navController);
-
-        /*navView.setOnNavigationItemSelectedListener(item -> {
-            Fragment selectedFragment = null;
-
-            int itemId = item.getItemId();
-            if (itemId == R.id.navigation_home) {
-                selectedFragment = new HomeFragment();
-            } else if (itemId == R.id.navigation_reverse) {
-                selectedFragment = new ReverseFragment();
-            } else if (itemId == R.id.navigation_about) {
-                selectedFragment = new AboutFragment();
-            }
-
-            FragmentTransaction transaction = getSupportFragmentManager().beginTransaction();
-            assert selectedFragment != null;
-            transaction.replace(R.id.nav_host_fragment, selectedFragment);
-            //transaction.addToBackStack(null);
-            transaction.commit();
-            return true;
-        });*/
-        /*navView.setOnNavigationItemReselectedListener(item -> {
-        });*/
     }
 
 }
