@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
     <string name="app_name">VAT Calculator</string>
-    <string name="about_created">App created by Arctosoft AB.\nVersion 1.4.0</string>
+    <string name="about_created">App created by Arctosoft AB.\nVersion 1.4.1</string>
     <string name="menu_home">Add VAT</string>
     <string name="menu_reverse">Remove VAT</string>
     <string name="menu_about">About</string>
