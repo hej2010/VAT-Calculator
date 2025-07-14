@@ -6,7 +6,6 @@ import android.content.Context;
 import android.os.Bundle;
 import android.text.Editable;
 import android.text.TextWatcher;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -18,6 +17,8 @@ import androidx.annotation.NonNull;
 import androidx.cardview.widget.CardView;
 import androidx.fragment.app.Fragment;
 import androidx.lifecycle.ViewModelProvider;
+
+import com.google.android.material.card.MaterialCardView;
 
 import java.util.Locale;
 
@@ -92,10 +93,10 @@ public class HomeFragment extends Fragment {
 
             layout.setOnClickListener(v -> {
                 for (int i = 0; i < VAT_RATES.length; i++) {
-                    ((CardView) lLVatRates.getChildAt(i)).setCardBackgroundColor(context.getResources().getColor(R.color.colorWhite));
+                    ((MaterialCardView) lLVatRates.getChildAt(i)).setCardBackgroundColor(context.getResources().getColor(R.color.colorWhite));
                 }
                 if (v instanceof CardView) {
-                    ((CardView) v).setCardBackgroundColor(context.getResources().getColor(R.color.colorAccent));
+                    ((MaterialCardView) v).setCardBackgroundColor(context.getResources().getColor(R.color.colorAccent));
                 }
                 eTValVatRate.setText(String.valueOf(v.getTag()));
             });
